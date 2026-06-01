@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router';
 import { UserProvider } from './context/UserContext';
 import { AuthProvider } from './context/AuthContext';
 import { LocaleProvider } from './context/LocaleContext';
+import { CertificateProvider } from './context/CertificateContext';
 import Splash from './components/onboarding/Splash';
 import Login from './components/onboarding/Login';
 import LanguageSelect from './components/onboarding/LanguageSelect';
@@ -23,6 +24,7 @@ export default function App() {
     <AuthProvider>
       <UserProvider>
         <LocaleProvider>
+          <CertificateProvider>
           <BrowserRouter>
             <div className="size-full">
               <Routes>
@@ -174,6 +176,7 @@ export default function App() {
               </Routes>
             </div>
           </BrowserRouter>
+          </CertificateProvider>
         </LocaleProvider>
       </UserProvider>
     </AuthProvider>
