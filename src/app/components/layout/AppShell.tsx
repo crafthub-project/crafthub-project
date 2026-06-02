@@ -20,10 +20,29 @@ import {
   Menu,
   X,
   TrendingUp,
+  Globe,
+  CheckCircle,
 } from 'lucide-react';
 import { useLocale } from '../../context/LocaleContext';
 import { useUser } from '../../context/UserContext';
 import { useAuth } from '../../context/AuthContext';
+
+const LANGUAGES = [
+  { code: 'en'  as const, label: '🇬🇧 English'    },
+  { code: 'lg'  as const, label: '🇺🇬 Luganda'    },
+  { code: 'rk'  as const, label: '🇺🇬 Runyankore' },
+  { code: 'ac'  as const, label: '🇺🇬 Acholi'     },
+  { code: 'teo' as const, label: '🇺🇬 Ateso'      },
+  { code: 'lgg' as const, label: '🇺🇬 Lugbara'    },
+  { code: 'cgg' as const, label: '🇺🇬 Rukiga'     },
+  { code: 'sw'  as const, label: '🇹🇿 Swahili'    },
+  { code: 'ny'  as const, label: '🇺🇬 Nyoro'      },
+  { code: 'nd'  as const, label: '🇿🇦 Ndebele'    },
+];
+
+const LANG_SHORT: Record<string, string> = {
+  en: 'EN', lg: 'LG', rk: 'RK', ac: 'AC', teo: 'TEO', lgg: 'LGG', cgg: 'CGG', sw: 'SW', ny: 'NY', nd: 'ND',
+};
 
 const NAVY = '#003366';
 const GOLD = '#B48C00';
@@ -202,10 +221,13 @@ interface HeaderProps {
 
 function Header({ onMenuClick, userName, search, onSearchChange }: HeaderProps) {
   const { logout } = useAuth();
+  const { locale, setLocale } = useLocale();
   const navigate = useNavigate();
   const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const langRef = useRef<HTMLDivElement>(null);
 
   const breadcrumbs = useMemo(() => formatBreadcrumbs(location.pathname), [location.pathname]);
 
@@ -213,6 +235,9 @@ function Header({ onMenuClick, userName, search, onSearchChange }: HeaderProps) 
     function handleClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setDropdownOpen(false);
+      }
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -278,6 +303,35 @@ function Header({ onMenuClick, userName, search, onSearchChange }: HeaderProps) 
             style={{ backgroundColor: GOLD }}
           />
         </button>
+
+        {/* Language switcher */}
+        <div className="relative" ref={langRef}>
+          <button
+            onClick={() => setLangOpen((v) => !v)}
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm text-slate-600 hover:bg-slate-100 transition-colors border border-slate-200"
+            aria-label="Change language"
+          >
+            <Globe size={14} />
+            <span className="font-semibold text-xs">{LANG_SHORT[locale] ?? 'EN'}</span>
+            <ChevronDown size={12} className={`text-slate-400 transition-transform ${langOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {langOpen && (
+            <div className="absolute right-0 top-full mt-1.5 w-48 bg-white rounded-xl shadow-lg border border-slate-200 py-1.5 z-50 max-h-64 overflow-y-auto">
+              <p className="px-3 py-1 text-xs font-semibold text-slate-400 uppercase tracking-wider">Language</p>
+              {LANGUAGES.map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => { setLocale(lang.code); setLangOpen(false); }}
+                  className="flex items-center justify-between w-full px-3 py-2 text-sm hover:bg-slate-50 transition-colors"
+                  style={{ color: locale === lang.code ? NAVY : '#374151', fontWeight: locale === lang.code ? 600 : 400 }}
+                >
+                  {lang.label}
+                  {locale === lang.code && <CheckCircle size={13} style={{ color: GOLD }} />}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         <div className="relative" ref={dropdownRef}>
           <button

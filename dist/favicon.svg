@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <!-- Background circle -->
+  <circle cx="96" cy="96" r="92" fill="#f7f3ea" stroke="#1f5c2e" stroke-width="2"/>
+  
+  <!-- Outer ring -->
+  <circle cx="96" cy="96" r="85" fill="none" stroke="#1f5c2e" stroke-width="1.5" opacity="0.3"/>
+  
+  <!-- Book icon (top left) -->
+  <g transform="translate(45, 45)">
+    <path d="M8 4h8v12H8z" fill="#B85A23" opacity="0.7"/>
+    <path d="M16 4h8v12h-8z" fill="#B85A23" opacity="0.9"/>
+    <path d="M8 6h16M8 9h16M8 12h16" stroke="#B85A23" stroke-width="1" opacity="0.6"/>
+  </g>
+  
+  <!-- Palette icon (top right) -->
+  <g transform="translate(130, 45)">
+    <circle cx="0" cy="0" r="8" fill="#B85A23" opacity="0.3" stroke="#B85A23" stroke-width="1"/>
+    <circle cx="-4" cy="-4" r="1.5" fill="#B85A23"/>
+    <circle cx="4" cy="-4" r="1.5" fill="#D4A574"/>
+    <circle cx="-4" cy="4" r="1.5" fill="#1F5C2E"/>
+    <circle cx="4" cy="4" r="1.5" fill="#F5A623"/>
+  </g>
+  
+  <!-- Mother and baby icon (center) -->
+  <g transform="translate(96, 96)">
+    <!-- Mother head -->
+    <circle cx="-8" cy="-15" r="6" fill="#1F5C2E"/>
+    <!-- Mother body -->
+    <ellipse cx="-8" cy="-5" rx="4" ry="8" fill="#1F5C2E"/>
+    <!-- Baby head -->
+    <circle cx="8" cy="-12" r="5" fill="#B85A23"/>
+    <!-- Baby body (sling) -->
+    <path d="M 2 -8 Q 4 0 8 6 Q 12 0 10 -8" fill="#F5A623" opacity="0.7"/>
+  </g>
+  
+  <!-- Plant/leaves icon (bottom left) -->
+  <g transform="translate(45, 130)">
+    <path d="M0 12 L-3 8 L-2 4 L0 6 L2 4 L3 8 Z" fill="#1F5C2E" opacity="0.8"/>
+    <path d="M0 12 L4 6 L5 0 L0 4 L-1 0 L-4 6 Z" fill="#1F5C2E" opacity="0.6"/>
+  </g>
+  
+  <!-- Shopping cart icon (bottom right) -->
+  <g transform="translate(130, 130)">
+    <path d="M-4 2 h8 l-2 8 h-4 z" fill="#B85A23" opacity="0.8" stroke="#B85A23" stroke-width="1"/>
+    <line x1="-6" y1="2" x2="6" y2="2" stroke="#B85A23" stroke-width="1" opacity="0.6"/>
+    <circle cx="-3" cy="12" r="1" fill="#B85A23"/>
+    <circle cx="3" cy="12" r="1" fill="#B85A23"/>
+  </g>
+  
+  <!-- Center accent -->
+  <circle cx="96" cy="96" r="3" fill="#B85A23"/>
+</svg>
