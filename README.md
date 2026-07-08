@@ -7,7 +7,8 @@
   Run `npm i` to install the dependencies.
 
   Run `npm run dev` to start the development server.
-  🎨 CraftHub - Connecting Creativity with Opportunity
+  
+  CraftHub - Connecting Creativity with Opportunity
  Project Overview
 
 CraftHub is a digital platform designed to connect talented young creators, artisans, and customers through an easy-to-use online marketplace. The platform provides a space where users can showcase their skills, discover handmade products, and create opportunities for economic empowerment.
